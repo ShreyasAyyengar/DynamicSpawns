@@ -1,0 +1,12 @@
+name: RivaSpawn
+version: '${project.version}'
+main: me.shreyasayyengar.rivaspawn.RivaSpawn
+api-version: 1.17
+prefix: RivaSpawn
+author: Shreyas Ayyengar
+description: Spawn system for RivaNetwork
+
+commands:
+  spawn:
+  rivaspawn:
+
