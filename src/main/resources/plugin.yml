@@ -9,4 +9,8 @@ description: Spawn system for RivaNetwork
 commands:
   spawn:
   rivaspawn:
+    aliases:
+      - rs
+      - rspawn
+      - riva
 

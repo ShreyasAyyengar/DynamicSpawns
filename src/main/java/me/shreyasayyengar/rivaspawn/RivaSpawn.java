@@ -2,6 +2,7 @@ package me.shreyasayyengar.rivaspawn;
 
 import me.shreyasayyengar.rivaspawn.commands.AdminSpawnCommand;
 import me.shreyasayyengar.rivaspawn.commands.RivaSpawnCommand;
+import me.shreyasayyengar.rivaspawn.events.Join;
 import me.shreyasayyengar.rivaspawn.utils.Config;
 import org.bukkit.Bukkit;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,7 +20,7 @@ public final class RivaSpawn extends JavaPlugin {
         instance = this;
         new Config(this);
         Bukkit.getLogger().info("Plugin started with no errors");
-//        getServer().getPluginManager().registerEvents(new Join(), this);
+        getServer().getPluginManager().registerEvents(new Join(), this);
         getCommand("spawn").setExecutor(new RivaSpawnCommand());
         getCommand("rivaspawn").setExecutor(new AdminSpawnCommand());
     }

@@ -16,6 +16,16 @@ public class RivaSpawnCommand implements CommandExecutor {
 
         if (sender instanceof Player) {
 
+            if (sender.hasPermission("rivaspawn.bypass")) {
+                Utils.teleportPlayer(((Player) sender));
+                if (Config.useTeleportMessage()) {
+                    for (String message : Config.getTeleportMessage()) {
+                        sender.sendMessage(Utils.colourise(message));
+                    }
+                }
+                return false;
+            }
+
             if (Config.useTimer()) {
 
                 final int[] seconds = {Config.getTimer()};

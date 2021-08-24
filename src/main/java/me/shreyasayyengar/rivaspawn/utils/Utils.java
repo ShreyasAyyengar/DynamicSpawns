@@ -33,6 +33,8 @@ public class Utils {
             Location spawnLocation = Config.getSpawnLocation(Utils.getRandomElement(keyList));
             assert spawnLocation != null;
 
+            System.out.println(spawnLocation.getPitch() + " | " + spawnLocation.getYaw());
+
             double x = spawnLocation.getX();
             double z = spawnLocation.getZ();
 
@@ -42,7 +44,7 @@ public class Utils {
                 player.teleport(spawnLocation.add(-0.5, 0, 0.5));
             } else if (x > 0 && z < 0) {
                 player.teleport(spawnLocation.add(0.5, 0, -0.5));
-            } else if (x < 0 && z <  0) {
+            } else if (x < 0 && z < 0) {
                 player.teleport(spawnLocation.add(-0.5, 0, -0.5));
             }
 

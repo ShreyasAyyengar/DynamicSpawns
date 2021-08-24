@@ -1,35 +1,25 @@
-spawns:
-  spawn1:
-    world: 'world'
-    x: 0
-    y: 10
-    z: 0
-    pitch: 90
-    yaw: 5
-
+spawns: {}
 timer:
   enabled: true
   seconds: 3
   message: "&3Teleporting you in {seconds} seconds"
-
-
 teleport-messages:
   enabled: true
   message:
     - "&3You were teleported!"
-
-
 help-messages:
   - "&8▶ &e/spawn"
   - "&8▶ &e/rivaspawn reload"
   - "&8▶ &e/rivaspawn create <name>"
   - "&8▶ &e/rivaspawn delete <name>"
   - "&8▶ &e/rivaspawn list"
-
-
 messages:
   no-permission: "&cYou do not have permission to use command!"
   reload: "&aConfiguration and Plugin reloaded!"
   spawn-create: "&cSuccessfully created {spawn} as a spawn!"
   spawn-delete: "&cDeleted the spawn '{spawn}'!"
   spawn-not-found: "&cThat spawn does not exist!"
+  no-spawns: "&cThere are no active spawns set"
+  already-exist: "&cThat spawn already exists!"
+  not-valid-number: "&cThat is not a valid number!"
+  spawn-edit: "&aEdited spawn {spawn}!"

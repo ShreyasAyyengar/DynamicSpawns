@@ -34,6 +34,15 @@ public class Config {
         } else return null;
     }
 
+    public static void editSpawn(String spawnName, double x, double y, double z, float pitch, float yaw) {
+        main.getConfig().set("spawns." + spawnName + ".x", x);
+        main.getConfig().set("spawns." + spawnName + ".y", y);
+        main.getConfig().set("spawns." + spawnName + ".z", z);
+        main.getConfig().set("spawns." + spawnName + ".pitch", pitch);
+        main.getConfig().set("spawns." + spawnName + ".yaw", yaw);
+        main.saveConfig();
+    }
+
     public static Location getSpawnLocation(String spawnName) {
         Set<String> keys = main.getConfig().getConfigurationSection("spawns.").getKeys(false);
 
@@ -44,8 +53,8 @@ public class Config {
                         main.getConfig().getDouble("spawns." + spawnName + ".x"),
                         main.getConfig().getDouble("spawns." + spawnName + ".y"),
                         main.getConfig().getDouble("spawns." + spawnName + ".z"),
-                        (float) main.getConfig().getDouble("spawns." + spawnName + ".pitch"),
-                        (float) main.getConfig().getDouble("spawns." + spawnName + ".yaw")
+                        (float) main.getConfig().getDouble("spawns." + spawnName + ".yaw"),
+                        (float) main.getConfig().getDouble("spawns." + spawnName + ".pitch")
                 );
 
             }
@@ -54,13 +63,13 @@ public class Config {
     }
 
     public static void registerSpawn(Spawn spawn) {
-        main.getConfig().getConfigurationSection("spawns").getKeys(false).add(spawn.getName());
+        main.getConfig().getConfigurationSection("spawns.").getKeys(false).add(spawn.getName());
         main.getConfig().set("spawns." + spawn.getName() + ".world", spawn.getLocation().getWorld().getName());
-        main.getConfig().set("spawns." + spawn.getName() + ".x", spawn.getLocation().getX());
-        main.getConfig().set("spawns." + spawn.getName() + ".y", spawn.getLocation().getY());
-        main.getConfig().set("spawns." + spawn.getName() + ".z",  spawn.getLocation().getZ());
-        main.getConfig().set("spawns." + spawn.getName() + ".pitch", spawn.getLocation().getPitch());
+        main.getConfig().set("spawns." + spawn.getName() + ".x", (int) spawn.getLocation().getX());
+        main.getConfig().set("spawns." + spawn.getName() + ".y", (int) spawn.getLocation().getY());
+        main.getConfig().set("spawns." + spawn.getName() + ".z", (int) spawn.getLocation().getZ());
         main.getConfig().set("spawns." + spawn.getName() + ".yaw", spawn.getLocation().getYaw());
+        main.getConfig().set("spawns." + spawn.getName() + ".pitch", spawn.getLocation().getPitch());
         main.saveConfig();
     }
 
@@ -87,6 +96,10 @@ public class Config {
         return new ArrayList<>(main.getConfig().getStringList("teleport-messages.message"));
     }
 
+    public static List<String> getHelpMessages() {
+        return new ArrayList<>(main.getConfig().getStringList("help-messages"));
+    }
+
     public static String getNoPerm() {
         return main.getConfig().getString("messages.no-permission");
     }
@@ -105,5 +118,21 @@ public class Config {
 
     public static String noSuchSpawn() {
         return main.getConfig().getString("messages.spawn-not-found");
+    }
+
+    public static String getNoSpawns() {
+        return main.getConfig().getString("messages.no-spawns");
+    }
+
+    public static String getAlreadyExists() {
+        return main.getConfig().getString("messages.already-exist");
+    }
+
+    public static String getNotNumber() {
+        return main.getConfig().getString("messages.not-valid-number");
+    }
+
+    public static String getEdited() {
+        return main.getConfig().getString("messages.spawn-edit");
     }
 }
