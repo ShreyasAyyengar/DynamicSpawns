@@ -1,16 +1,15 @@
-name: RivaSpawn
+name: DynamicSpawns
 version: '${project.version}'
-main: me.shreyasayyengar.rivaspawn.RivaSpawn
-api-version: 1.17
-prefix: RivaSpawn
+main: me.shreyasayyengar.dynamicspawns.DynamicSpawns
+prefix: DynamicSpawns
 author: Shreyas Ayyengar
-description: Spawn system for RivaNetwork
-
+description: A Dynamic spawns system for servers looking to have multiple spawn points.
 commands:
   spawn:
-  rivaspawn:
+  test:
+  dynamicspawns:
     aliases:
-      - rs
-      - rspawn
-      - riva
+      - ds
+      - dspawn
+      - spawns
 

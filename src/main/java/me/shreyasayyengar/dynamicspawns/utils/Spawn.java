@@ -1,6 +1,6 @@
-package me.shreyasayyengar.rivaspawn.utils;
+package me.shreyasayyengar.dynamicspawns.utils;
 
-import me.shreyasayyengar.rivaspawn.RivaSpawn;
+import me.shreyasayyengar.dynamicspawns.DynamicSpawns;
 import org.bukkit.Location;
 
 public class Spawn {
@@ -13,7 +13,7 @@ public class Spawn {
         this.location = location;
         if (register) {
             Config.registerSpawn(this);
-            RivaSpawn.getInstance().saveConfig();
+            DynamicSpawns.getInstance().saveConfig();
         }
     }
 

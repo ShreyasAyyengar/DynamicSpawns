@@ -1,25 +1,32 @@
 spawns: {}
+
 timer:
   enabled: true
   seconds: 3
-  message: "&3Teleporting you in {seconds} seconds"
+  message: "&aTeleporting you in &b{seconds} seconds"
+
 teleport-messages:
   enabled: true
   message:
-    - "&3You were teleported!"
-help-messages:
-  - "&8▶ &e/spawn"
-  - "&8▶ &e/rivaspawn reload"
-  - "&8▶ &e/rivaspawn create <name>"
-  - "&8▶ &e/rivaspawn delete <name>"
-  - "&8▶ &e/rivaspawn list"
+    - "&bYou were teleported!"
+
 messages:
   no-permission: "&cYou do not have permission to use command!"
   reload: "&aConfiguration and Plugin reloaded!"
-  spawn-create: "&cSuccessfully created {spawn} as a spawn!"
-  spawn-delete: "&cDeleted the spawn '{spawn}'!"
+  spawn-create: "&aSuccessfully created &l&b{spawn} &aas a spawn!"
+  spawn-delete: "&cDeleted the spawn &l&b'{spawn}'&c!"
   spawn-not-found: "&cThat spawn does not exist!"
-  no-spawns: "&cThere are no active spawns set"
+  no-spawns: "&cThere are no active spawns set D:"
   already-exist: "&cThat spawn already exists!"
   not-valid-number: "&cThat is not a valid number!"
-  spawn-edit: "&aEdited spawn {spawn}!"
+  spawn-edit: "&6Edited spawn &e{spawn}!"
+
+help-messages:
+  - "&e/spawn - The main spawn command for users"
+  - "&e/dynamicspawns reload - Reloads the plugin and the configuration file (config.yml)"
+  - "&e/dynamicspawns create <name> - Creates a spawn where you are standing"
+  - "&e/dynamicspawns delete <name> - Deletes the spawn specified"
+  - "&e/dynamicspawns list - List all active spawns"
+  - "&e/dynamicspawns edit <name> <x> <y> <z> <pitch> <yaw>"
+
+teleport-on-join: true

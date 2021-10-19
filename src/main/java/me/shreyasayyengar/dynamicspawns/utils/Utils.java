@@ -1,6 +1,6 @@
-package me.shreyasayyengar.rivaspawn.utils;
+package me.shreyasayyengar.dynamicspawns.utils;
 
-import me.shreyasayyengar.rivaspawn.RivaSpawn;
+import me.shreyasayyengar.dynamicspawns.DynamicSpawns;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Location;
@@ -19,21 +19,19 @@ public class Utils {
             return list.get(rand.nextInt(list.size()));
         } catch (IllegalArgumentException x) {
             Bukkit.getLogger().warning("There are no spawns set!");
-            Bukkit.getScheduler().cancelTasks(RivaSpawn.getInstance());
+            Bukkit.getScheduler().cancelTasks(DynamicSpawns.getInstance());
         }
         return null;
     }
 
     public static void teleportPlayer(Player player) {
-        Set<String> keys = RivaSpawn.getInstance().getConfig().getConfigurationSection("spawns.").getKeys(false);
+        Set<String> keys = Utils.getSpawns();
 
         if (keys.size() > 0) {
             List<String> keyList = new ArrayList<>(keys);
 
             Location spawnLocation = Config.getSpawnLocation(Utils.getRandomElement(keyList));
             assert spawnLocation != null;
-
-            System.out.println(spawnLocation.getPitch() + " | " + spawnLocation.getYaw());
 
             double x = spawnLocation.getX();
             double z = spawnLocation.getZ();
@@ -55,4 +53,7 @@ public class Utils {
         return ChatColor.translateAlternateColorCodes('&', message);
     }
 
+    public static Set<String> getSpawns() {
+        return DynamicSpawns.getInstance().getConfig().getConfigurationSection("spawns").getKeys(false);
+    }
 }

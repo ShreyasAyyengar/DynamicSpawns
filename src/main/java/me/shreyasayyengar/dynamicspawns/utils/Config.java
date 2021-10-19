@@ -1,6 +1,6 @@
-package me.shreyasayyengar.rivaspawn.utils;
+package me.shreyasayyengar.dynamicspawns.utils;
 
-import me.shreyasayyengar.rivaspawn.RivaSpawn;
+import me.shreyasayyengar.dynamicspawns.DynamicSpawns;
 import org.bukkit.Bukkit;
 import org.bukkit.Location;
 
@@ -10,11 +10,11 @@ import java.util.Set;
 
 public class Config {
 
-    private static RivaSpawn main;
+    private static DynamicSpawns main;
 
-    public Config(RivaSpawn main) {
+    public Config(DynamicSpawns main) {
         Config.main = main;
-        main.getConfig().options().configuration();
+        main.getConfig().options().copyDefaults(true);
         main.saveDefaultConfig();
     }
 
@@ -63,7 +63,7 @@ public class Config {
     }
 
     public static void registerSpawn(Spawn spawn) {
-        main.getConfig().getConfigurationSection("spawns.").getKeys(false).add(spawn.getName());
+//        main.getConfig().getConfigurationSection("spawns.").getKeys(false).add(spawn.getName());sdfdsf
         main.getConfig().set("spawns." + spawn.getName() + ".world", spawn.getLocation().getWorld().getName());
         main.getConfig().set("spawns." + spawn.getName() + ".x", (int) spawn.getLocation().getX());
         main.getConfig().set("spawns." + spawn.getName() + ".y", (int) spawn.getLocation().getY());
@@ -134,5 +134,9 @@ public class Config {
 
     public static String getEdited() {
         return main.getConfig().getString("messages.spawn-edit");
+    }
+
+    public static boolean teleportJoin() {
+        return main.getConfig().getBoolean("teleport-on-join");
     }
 }

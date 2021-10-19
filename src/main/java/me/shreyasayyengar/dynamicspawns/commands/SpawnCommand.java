@@ -1,22 +1,27 @@
-package me.shreyasayyengar.rivaspawn.commands;
+package me.shreyasayyengar.dynamicspawns.commands;
 
-import me.shreyasayyengar.rivaspawn.RivaSpawn;
-import me.shreyasayyengar.rivaspawn.utils.Config;
-import me.shreyasayyengar.rivaspawn.utils.Utils;
+import me.shreyasayyengar.dynamicspawns.DynamicSpawns;
+import me.shreyasayyengar.dynamicspawns.utils.Config;
+import me.shreyasayyengar.dynamicspawns.utils.Utils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.scheduler.BukkitRunnable;
 
-public class RivaSpawnCommand implements CommandExecutor {
+public class SpawnCommand implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
+        if (DynamicSpawns.getInstance().getConfig().getConfigurationSection("spawns.").getKeys(false).size() == 0) {
+            sender.sendMessage(Utils.colourise(Config.getNoSpawns()));
+            return false;
+        }
+
         if (sender instanceof Player) {
 
-            if (sender.hasPermission("rivaspawn.bypass")) {
+            if (sender.hasPermission("dynamicspawns.bypass")) {
                 Utils.teleportPlayer(((Player) sender));
                 if (Config.useTeleportMessage()) {
                     for (String message : Config.getTeleportMessage()) {
@@ -46,7 +51,7 @@ public class RivaSpawnCommand implements CommandExecutor {
                             }
                         }
                     }
-                }.runTaskTimer(RivaSpawn.getInstance(), 0, 20);
+                }.runTaskTimer(DynamicSpawns.getInstance(), 0, 20);
             } else {
                 Utils.teleportPlayer(((Player) sender));
                 if (Config.useTeleportMessage()) {
