@@ -19,7 +19,7 @@ public class Utils {
             return list.get(rand.nextInt(list.size()));
         } catch (IllegalArgumentException x) {
             Bukkit.getLogger().warning("There are no spawns set!");
-            Bukkit.getScheduler().cancelTasks(DynamicSpawns.getInstance());
+            Bukkit.getScheduler().cancelTasks(DynamicSpawns.getINSTANCE());
         }
         return null;
     }
@@ -54,6 +54,6 @@ public class Utils {
     }
 
     public static Set<String> getSpawns() {
-        return DynamicSpawns.getInstance().getConfig().getConfigurationSection("spawns").getKeys(false);
+        return DynamicSpawns.getINSTANCE().getConfig().getConfigurationSection("spawns").getKeys(false);
     }
 }

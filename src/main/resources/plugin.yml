@@ -1,5 +1,5 @@
 name: DynamicSpawns
-version: '${project.version}'
+version: 1.0
 main: me.shreyasayyengar.dynamicspawns.DynamicSpawns
 prefix: DynamicSpawns
 author: Shreyas Ayyengar
@@ -12,4 +12,21 @@ commands:
       - ds
       - dspawn
       - spawns
+
+permissions:
+  dynamicspawns.bypass:
+    description: Allows a user to bypass the spawn countdown when doing /spawn
+  dynamicspawns.help:
+    description: Allows a user to see the admin help messages
+  dynamicspawns.list:
+    description: Allows a user to see a list of active spawns
+  dynamicspawn.reload:
+    description: Allows a user to reload the plugin and the configuration file.
+  dynamicspawns.setspawn:
+    description: Allows a user to create a spawn
+  dynamicspawns.delete:
+    description: Allows a user to delete a spawn
+  dynamicspawns.edit:
+    description: Allows a user to edit a spawn
+
 

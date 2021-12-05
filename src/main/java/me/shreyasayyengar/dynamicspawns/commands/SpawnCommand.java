@@ -14,7 +14,7 @@ public class SpawnCommand implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
 
-        if (DynamicSpawns.getInstance().getConfig().getConfigurationSection("spawns.").getKeys(false).size() == 0) {
+        if (Utils.getSpawns().size() == 0) {
             sender.sendMessage(Utils.colourise(Config.getNoSpawns()));
             return false;
         }
@@ -51,7 +51,7 @@ public class SpawnCommand implements CommandExecutor {
                             }
                         }
                     }
-                }.runTaskTimer(DynamicSpawns.getInstance(), 0, 20);
+                }.runTaskTimer(DynamicSpawns.getINSTANCE(), 0, 20);
             } else {
                 Utils.teleportPlayer(((Player) sender));
                 if (Config.useTeleportMessage()) {

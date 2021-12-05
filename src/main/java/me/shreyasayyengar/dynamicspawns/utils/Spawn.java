@@ -13,7 +13,7 @@ public class Spawn {
         this.location = location;
         if (register) {
             Config.registerSpawn(this);
-            DynamicSpawns.getInstance().saveConfig();
+            DynamicSpawns.getINSTANCE().saveConfig();
         }
     }
 

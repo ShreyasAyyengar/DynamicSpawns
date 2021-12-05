@@ -63,7 +63,6 @@ public class Config {
     }
 
     public static void registerSpawn(Spawn spawn) {
-//        main.getConfig().getConfigurationSection("spawns.").getKeys(false).add(spawn.getName());sdfdsf
         main.getConfig().set("spawns." + spawn.getName() + ".world", spawn.getLocation().getWorld().getName());
         main.getConfig().set("spawns." + spawn.getName() + ".x", (int) spawn.getLocation().getX());
         main.getConfig().set("spawns." + spawn.getName() + ".y", (int) spawn.getLocation().getY());

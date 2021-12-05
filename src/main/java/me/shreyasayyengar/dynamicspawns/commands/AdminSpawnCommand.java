@@ -57,7 +57,7 @@ public class AdminSpawnCommand implements CommandExecutor, TabCompleter {
 
             if (args[0].equalsIgnoreCase("reload")) {
                 if (sender.hasPermission("dynamicspawn.reload")) {
-                    DynamicSpawns.getInstance().reloadConfig();
+                    DynamicSpawns.getINSTANCE().reloadConfig();
                     sender.sendMessage(Utils.colourise(reload));
                 } else sender.sendMessage(noPerm);
             }
@@ -74,7 +74,7 @@ public class AdminSpawnCommand implements CommandExecutor, TabCompleter {
         if (args.length == 2) {
             if (args[0].equalsIgnoreCase("create")) {
                 if (sender instanceof Player) {
-                    if (sender.hasPermission("rivacoins.setspawn")) {
+                    if (sender.hasPermission("dynamicspawns.setspawn")) {
 
                         String spawnName = args[1].toLowerCase();
                         for (String key : Utils.getSpawns()) {
@@ -95,8 +95,8 @@ public class AdminSpawnCommand implements CommandExecutor, TabCompleter {
                     String spawnName = args[1].toLowerCase();
 
                     if (Utils.getSpawns().toString().contains(spawnName)) {
-                        DynamicSpawns.getInstance().getConfig().set("spawns." + spawnName.toLowerCase(), null);
-                        DynamicSpawns.getInstance().saveConfig();
+                        DynamicSpawns.getINSTANCE().getConfig().set("spawns." + spawnName.toLowerCase(), null);
+                        DynamicSpawns.getINSTANCE().saveConfig();
                         sender.sendMessage(Utils.colourise(delete.replace("{spawn}", spawnName)));
                         return false;
                     } else sender.sendMessage(Utils.colourise(notFound));
@@ -192,7 +192,8 @@ public class AdminSpawnCommand implements CommandExecutor, TabCompleter {
             if (args[0].equalsIgnoreCase("edit")) {
 
                 ArrayList<String> objects = new ArrayList<>();
-                objects.add((sender instanceof Player ? String.valueOf(((Player) sender).getLocation().getX()) : "<x>"));
+                objects.add((sender instanceof Player ? String.valueOf(Math.round(((Player) sender).getLocation().getX())) : "<x>"));
+
                 return objects;
             }
         }
@@ -201,7 +202,7 @@ public class AdminSpawnCommand implements CommandExecutor, TabCompleter {
             if (args[0].equalsIgnoreCase("edit")) {
 
                 ArrayList<String> objects = new ArrayList<>();
-                objects.add((sender instanceof Player ? String.valueOf(((Player) sender).getLocation().getX()) : "<y>"));
+                objects.add((sender instanceof Player ? String.valueOf(Math.round(((Player) sender).getLocation().getY())) : "<y>"));
                 return objects;
             }
         }
@@ -210,7 +211,8 @@ public class AdminSpawnCommand implements CommandExecutor, TabCompleter {
             if (args[0].equalsIgnoreCase("edit")) {
 
                 ArrayList<String> objects = new ArrayList<>();
-                objects.add((sender instanceof Player ? String.valueOf(((Player) sender).getLocation().getX()) : "<z>"));
+                objects.add((sender instanceof Player ? String.valueOf(Math.round(((Player) sender).getLocation().getZ())) : "<z>"));
+
                 return objects;
             }
         }
@@ -219,7 +221,8 @@ public class AdminSpawnCommand implements CommandExecutor, TabCompleter {
             if (args[0].equalsIgnoreCase("edit")) {
 
                 ArrayList<String> objects = new ArrayList<>();
-                objects.add((sender instanceof Player ? String.valueOf(((Player) sender).getLocation().getX()) : "<pitch>"));
+                objects.add((sender instanceof Player ? String.valueOf(Math.round(((Player) sender).getLocation().getPitch())) : "<pitch>"));
+
                 return objects;
             }
         }
@@ -228,7 +231,8 @@ public class AdminSpawnCommand implements CommandExecutor, TabCompleter {
             if (args[0].equalsIgnoreCase("edit")) {
 
                 ArrayList<String> objects = new ArrayList<>();
-                objects.add((sender instanceof Player ? String.valueOf(((Player) sender).getLocation().getX()) : "<yaw>"));
+                objects.add((sender instanceof Player ? String.valueOf(Math.round(((Player) sender).getLocation().getYaw())) : "<yaw>"));
+
                 return objects;
             }
         }
